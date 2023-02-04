@@ -8,12 +8,17 @@ const AppReducer = (state, action) => {
         ...state,
         expenses: [...state.expenses, action.payload],
       };
-    case 'DELE_EXPENSE':
+    case 'DELETE_EXPENSE':
       return {
         ...state,
         expenses: state.expenses.filter(
           (expense) => expense.id !== action.payload
         ),
+      };
+    case 'SET_BUDGET':
+      return {
+        ...state,
+        budget: action.payload,
       };
     default:
       return state;
@@ -23,17 +28,14 @@ const AppReducer = (state, action) => {
 const initialState = {
   budget: 2000,
   expenses: [
-    { id: uuidv4(), name: 'Shopping', cost: 50 },
-    { id: uuidv4(), name: 'Holiday', cost: 300 },
-    { id: uuidv4(), name: 'Transportation', cost: 70 },
-    { id: uuidv4(), name: 'Fuel', cost: 40 },
-    { id: uuidv4(), name: 'Child Care', cost: 500 },
+    { id: uuidv4(), name: 'example', cost: 50 },
+    { id: uuidv4(), name: 'example', cost: 500 },
   ],
 };
 
 export const AppContext = createContext();
 
-export const AppProvider = (props) => {
+export const AppProvider = ({children}) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   return (
@@ -44,7 +46,7 @@ export const AppProvider = (props) => {
         dispatch,
       }}
     >
-      {props.children}
+      {children}
     </AppContext.Provider>
   );
 };

@@ -20,7 +20,11 @@ const ExpenseItem = (props) => {
         <span className="badge badge-primary badge-pill mr-3 text-primary">
           ${props.cost}
         </span>
-        <TiDelete size="1.5em" onClick={handleDelete}></TiDelete>
+        <TiDelete
+          size="1.5em"
+          onClick={handleDelete}
+          className="data-mdb-attribute"
+        ></TiDelete>
       </div>
     </li>
   );
