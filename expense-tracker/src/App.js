@@ -15,7 +15,7 @@ const App = () => {
   const [user] = useAuthState(auth);
 
   return (
-    <div>
+    <div className="App">
       <NavBar />
       {!user ? (
         <Welcome />

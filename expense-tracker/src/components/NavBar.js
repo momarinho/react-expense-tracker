@@ -25,15 +25,15 @@ const NavBar = () => {
   //       console.error(error);
   //     });
   // };
-  
+
   return (
-    <nav className="">
+    <nav className="alert alert-secondary p-3 d-flex align-items-center justify-content-center">
       {user ? (
-        <button onClick={signOut} className="signOut" type="button">
+        <button onClick={signOut} class="btn btn-success" type="button">
           Sign Out
         </button>
       ) : (
-        <button className="signIn" onClick={signIn}>
+        <button className="btn btn-primary" onClick={signIn}>
           Sign In
         </button>
       )}
